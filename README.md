@@ -146,3 +146,7 @@ def featuresExtract(mongo, sesID):
             "numOfGetReqs": countGETReqsPerSession(HttpLogs, sesID)
     }
 ```
+
+# Train your own models
+
+In progress.. Soon enough scripts for automated production of trained feature classifiers will be provided.
