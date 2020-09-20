@@ -55,8 +55,9 @@ def predictBehavior(mongo, sessionDict, useModels, model, textModel):
                 pred = pred[0]
             
             # NN produces a value in range [0,1] as pred
-            # svcSVM produces either 0 or 1 as pred
-            predModel = int(round(pred))
+            # classifiers produce either 0 or 1 as pred
+            # predModel = int(round(pred))
+            predModel = int((pred + 1)/2)
 
         # Set behavior - Abnormal/Normal
         sessionDict["behavior"] = classes[predModel]
