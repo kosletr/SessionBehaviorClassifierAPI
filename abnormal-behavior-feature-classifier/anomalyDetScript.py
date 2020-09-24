@@ -257,8 +257,8 @@ Preprocessing - Section
 df = pd.concat([pd.read_csv(os.path.join(dir_path,f), index_col=False) for f in os.listdir(dir_path) if f.endswith('.csv')], ignore_index=True)
 
 # Preprocessing and split to train, test sets
-X_train, X_test, y_train, y_test = preprocess_and_split(
-    df, cols_to_remove, class_name, class_dict, test_size=0.2, random_state=42, split=True)
+X, y = preprocess_and_split(
+    df, cols_to_remove, class_name, class_dict, test_size=0.2, random_state=42, split=False)
 
 # %%
 
@@ -268,7 +268,7 @@ Training - Section
 """
 
 # Train the models
-final_model = train_models(choose_models(), X_train, metric=metric)
+final_model = train_models(choose_models(), X, metric=metric)
 best_model_name, best_model, best_model_params, best_score = final_model[0][
     0], final_model[0][1], final_model[0][2], final_model[0][3]
 
@@ -279,23 +279,19 @@ best_model_name, best_model, best_model_params, best_score = final_model[0][
 Evaluation - Section
 """
 
-# Evaluation on train - test sets
-y_train_pred = best_model.predict(X_train)
-y_test_pred = best_model.predict(X_test)
+# Calculate Predictions
+y_pred = best_model.predict(X)
 
 # Get class names and labels
 class_names = list(class_dict.keys())
 labels = list(class_dict.values())
 
-# Confusion Matrix on train - test sets
-cm_train = confusion_matrix(y_train, y_train_pred, labels=labels)
-cm_test = confusion_matrix(y_test, y_test_pred, labels=labels)
+# Confusion Matrix
+cm = confusion_matrix(y, y_pred, labels=labels)
 
-# Classification Report on train - test sets
-cr_train = classification_report(
-    y_train, y_train_pred, labels=labels, target_names=class_names)
-cr_test = classification_report(
-    y_test, y_test_pred, labels=labels, target_names=class_names)
+# Classification Report
+cr = classification_report(
+    y, y_pred, labels=labels, target_names=class_names)
 
 # %%
 
@@ -310,23 +306,13 @@ print('Best Parameter(s): ', best_model_params)
 print('Best Score: ', best_score)
 
 # Train Set Results
-print('\nClassification Report - Train Set: \n')
-print(cr_train)
-print('Confusion Matrix - Train Set: ')
-print(cm_train)
+print('\nClassification Report: \n')
+print(cr)
+print('Confusion Matrix: ')
+print(cm)
 
-# Plot Confusion Matrix - Train Set
-plot_confusion_matrix(cm_train, title="Confusion Matrix - Train Set", target_names=class_names)
-plt.show()
-
-# Test Set Results
-print('\nClassification Report - Test Set: \n')
-print(cr_test)
-print('Confusion Matrix - Test Set: ')
-print(cm_test)
-
-# Plot Confusion Matrix - Test Set
-plot_confusion_matrix(cm_test, title="Confusion Matrix - Test Set", target_names=class_names)
+# Plot Confusion Matrix
+plot_confusion_matrix(cm, target_names=class_names)
 plt.show()
 
 # Export the final model
