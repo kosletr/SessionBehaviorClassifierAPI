@@ -14,7 +14,7 @@ import pandas as pd
 import operator
 from sklearn import neighbors, svm, linear_model, tree, ensemble, metrics
 from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import classification_report, confusion_matrix, recall_score, make_scorer
 from keras.wrappers.scikit_learn import KerasClassifier
 from keras.layers import Dense, Activation, Dropout
 from keras.models import Sequential
@@ -38,7 +38,10 @@ cols_to_remove = ['_id', 'sessionID', 'active',
                   'clientIP', 'endTimestamp', 'reqBodiesData']
 
 # Use two metrics to solve ties between models
-metrics = ['recall_macro', 'f1_macro']
+metrics = {
+    'sc1': make_scorer(recall_score, pos_label=class_dict["Abnormal"]), 
+    'sc2':'f1_macro'
+    }
 
 export_model_filename = "model.joblib"
 
@@ -56,12 +59,8 @@ def preprocess_and_split(df, cols_to_remove, class_name, class_dict, test_size=0
     # Remove unecessary columns
     df = df.drop(columns=cols_to_remove)
 
-    # Replace string values by category numbers
-    # df.replace({class_name: class_dict}, inplace=True)
-
     # Split the dataframe to data and labels
     X, y = df.drop(columns=[class_name]).to_numpy(), df[class_name].to_numpy()
-    
 
     if split == True:
 
@@ -218,7 +217,7 @@ def returnLatexDf(best_fit_model, metrics, k):
     split_cols = ["split"+str(x)+"_test" for x in range(k)] + ["mean_test"]
     df_latex = []
 
-    for m in metrics:
+    for m in list(metrics.keys()):
         df_col_names = ["params"] + [x + '_' + m for x in split_cols]
         df_part = df_model[df_model.columns & df_col_names]
         df_latex.append(df_part.to_latex(index=False))
@@ -249,10 +248,10 @@ def train_models(models, X, y, metrics, refit, k):
                 best_fit_model.best_estimator_,
                 # Best Parameters of the estimator
                 best_fit_model.best_params_,
-                # Metric_0 of the best estimator
-                best_fit_model.best_score_,
-                # Metric_1 of the best estimator
-                best_fit_model.cv_results_['mean_test_'+metrics[1]][best_model.best_index_]
+                # Metric_0 of the best estimator (4 decimals)
+                round(best_fit_model.best_score_, 4),
+                # Metric_1 of the best estimator (4 decimals)
+                round(best_fit_model.cv_results_['mean_test_sc2'][best_model.best_index_], 4)
             )
         )
 
@@ -327,7 +326,7 @@ Training - Section
 
 # Train the models
 final_model = train_models(choose_models(), X_train,
-                           y_train, metrics=metrics, refit=metrics[0], k=5)
+                           y_train, metrics=metrics, refit='sc1', k=5)
 best_model_name, best_model, best_model_params, best_score_0, best_score_1 = final_model[0][
     0], final_model[0][1], final_model[0][2], final_model[0][3], final_model[0][4]
 
