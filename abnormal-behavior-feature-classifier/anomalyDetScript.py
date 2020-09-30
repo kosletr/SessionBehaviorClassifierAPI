@@ -291,7 +291,7 @@ cm = confusion_matrix(y, y_pred, labels=labels)
 
 # Classification Report
 cr = classification_report(
-    y, y_pred, labels=labels, target_names=class_names)
+    y, y_pred, labels=labels, target_names=class_names, digits=4)
 
 # %%
 

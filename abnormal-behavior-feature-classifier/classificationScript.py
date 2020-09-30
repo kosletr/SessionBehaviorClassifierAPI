@@ -353,10 +353,10 @@ cm_test = confusion_matrix(y_test, y_test_pred, labels=labels)
 
 # Classification Report on the train set
 cr_train = classification_report(
-    y_train, y_train_pred, labels=labels, target_names=class_names)
+    y_train, y_train_pred, labels=labels, target_names=class_names, digits=4)
 # Classification Report on the test set
 cr_test = classification_report(
-    y_test, y_test_pred, labels=labels, target_names=class_names)
+    y_test, y_test_pred, labels=labels, target_names=class_names, digits=4)
 
 # %%
 
