@@ -53,23 +53,6 @@ Install the requirements:
 pip install -r requirements.txt
 ```
 
-## Export Features from MongoDB
-
-To export features from a MongoDB Database - Collection just open the `exportFeatures.py` file using a text editor of your choice and add your settings to the `Parameters` section:
-
-| Parameter           | Description         |
-| ------------------- | ------------------- |
-| `dbName`            | The name of the database to get the data from. |
-| `collectionName`    | The name of the collection in the specified dataset. |
-| `exportFilename`    | The name of the file to save the dataset. |
-| `mongoUri`          | The URI that identifies the MongoDB Database. |
-
-Then run the script using python:
-
-```markdown
-python exportfeatures.py
-```
-
 ## Grid Search with 5-Fold Cross-Validation
 
 To run the Grid Search with 5-Fold Cross-Validation - Classification script just open the `classificationScript.py` file using a text editor of your choice and add your settings to the `Parameters` section:

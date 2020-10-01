@@ -28,10 +28,10 @@ The order in which each component should be used is the following:
 - Install and configure `seham` on your website.
 - Disable the use of the classification models in `Session Behavior Classifier API` in order to collect user's web traffic data.
 - Deploy the `Session Behavior Classifier API`.
-- Create a dataset using `exportFeatures.py` script located in `abnormal-behavior-feature-classifier` folder and add labels to the `behavior` attribute.
-- Train the `Abnormal Behavior Feature Classifier` using this dataset.
-- Train the `Malicious Payload Text Classifier` using the provided dataset.
-- Copy the `model.joblib` (or `model.h5`) and `textModel.h5` trained models to the `session-behavior-classifier-api\api` directory.
+- Create two datasets (numeric + text features) using `exportFeatures.py` script located in the `datasets` folder and add labels to the `behavior` attribute.
+- Train the `Abnormal Behavior Feature Classifier` using the numeric dataset.
+- Train the `Malicious Payload Text Classifier` using the provided dataset, after merging it with the extracted string dataset.
+- Copy the `model.joblib` (or `model.h5`) and the `textModel.h5` trained models to the `session-behavior-classifier-api\api` directory.
 - Enable the use of the classification models in `Session Behavior Classifier API` to start using the system.
 
 The provided `model.joblib` file was created based on `misa-j`'s `social-network` website for the purpose of experimentation and evaluation of the system's efficiency.

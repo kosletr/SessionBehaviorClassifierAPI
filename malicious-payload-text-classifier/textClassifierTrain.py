@@ -141,7 +141,7 @@ y_pred = np.argmax(y_pred,axis=-1)
 
 # Print more Results
 print('Classification Report: ')
-print(classification_report(y_test, y_pred, labels=list(labels.values()), target_names=list(labels.keys())))
+print(classification_report(y_test, y_pred, labels=list(labels.values()), target_names=list(labels.keys()), digits=4))
 print('Confusion Matrix: ')
 print(confusion_matrix(y_test, y_pred, labels=list(labels.values())))
 

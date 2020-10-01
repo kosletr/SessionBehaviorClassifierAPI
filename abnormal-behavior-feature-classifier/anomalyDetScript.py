@@ -26,7 +26,7 @@ Parameters - Section
 """
 
 
-dir_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'datasets')
+dir_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..//datasets')
 
 class_name = "behavior"
 class_dict = {"Abnormal": -1, "Normal": 1}
