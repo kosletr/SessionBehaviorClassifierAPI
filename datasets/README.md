@@ -21,15 +21,15 @@ while for the benign instances (Normal) we used:
 
 | Category            | Number of Instances |
 | ------------------- | ------------------- |
-| Dictionary Attacks  |        97           |
-| DoS Attacks         |        44           |
+| Dictionary Attacks  |        96           |
+| DoS Attacks         |        38           |
 | Aggresive Vuln Scan |        71           |
 
 ## Total Instances
 
 | Category            | Number of Instances |
 | ------------------- | ------------------- |
-|  Abnormal           |       212           |
+|  Abnormal           |       205           |
 |  Normal             |       800           |
 
 
