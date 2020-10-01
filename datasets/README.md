@@ -44,14 +44,14 @@ To export features from a MongoDB Database - Collection just open the `exportFea
 | `exportFilename`    | The name of the file to save the dataset. |
 | `mongoUri`          | The URI that identifies the MongoDB Database. |
 
-The script produces two .csv files. One for the numeric features and another one for the reqBodies string feature in the appropriate form for training.
-Cut the string-dataset file and paste it in the `malicious-payload-text-classifier` directory. Merge it with the provided dataset before training.
-
 Then run the script using python:
 
 ```markdown
 python exportfeatures.py
 ```
+
+The script produces two .csv files. One for the numeric features and another one for the reqBodies string feature in the appropriate form for training.
+Cut the string-dataset file and paste it in the `malicious-payload-text-classifier` directory. Merge it with the provided dataset before training.
 
 # Credits ✨
 
