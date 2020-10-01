@@ -30,8 +30,8 @@ Support Vector Classifier with Linear Kernel | C: 0.001, 0.01, 0.1, 1, 10, 100 |
 Support Vector Classifier with Radial Kernel | C: 0.001, 0.01, 0.1, 1, 10, 100, gamma: 0.001, 0.01, 0.1, 1, 10, 100 |
 K Nearest Neighbors Classifier |  n_neighbors: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 |
 Decision Tree Classifier | max_depth: 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 |
-Random Forest Classifier -Linear SVM | n_estimators: 10, 20, 50, 100, 200 |
-Stochastic Gradient Descent Classifier | max_iter: 100, 1000, alpha: 0.0001, 0.001, 0.01, 0.1 |
+Random Forest Classifier | n_estimators: 10, 20, 50, 100, 200 |
+Stochastic Gradient Descent Classifier - Linear SVM | max_iter: 100, 1000, alpha: 0.0001, 0.001, 0.01, 0.1 |
 Logistic Regression with LASSO | C: 0.001, 0.01, 0.1, 1, 10, 100 |
 
 
