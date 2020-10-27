@@ -40,7 +40,7 @@ To export features from a MongoDB Database - Collection just open the `exportFea
 | Parameter           | Description         |
 | ------------------- | ------------------- |
 | `dbName`            | The name of the database to get the data from. |
-| `collectionName`    | The name of the collection in the specified dataset. |
+| `collectionName`    | The name of the collection in the specified database. |
 | `exportFilename`    | The name of the file to save the dataset. |
 | `mongoUri`          | The URI that identifies the MongoDB Database. |
 
