@@ -4,7 +4,7 @@
 
 This collection of scripts was created for the scope of my Bachelor Thesis in the Aristotle University of Thessaloniki during the academic year 2019-2020. 
 
-![](https://github.com/kosletr/SessionBehaviorClassifierAPI/blob/master/images/full_diagram.png) 
+![](https://github.com/kosletr/SessionBehaviorClassifierAPI/blob/master/images/full_diag.png) 
 
 Specifically, it contains:
 
