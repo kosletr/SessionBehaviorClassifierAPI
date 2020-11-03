@@ -4,6 +4,8 @@
 
 This collection of scripts was created for the scope of my Bachelor Thesis in the Aristotle University of Thessaloniki during the academic year 2019-2020. 
 
+![](https://github.com/kosletr/SessionBehaviorClassifierAPI/blob/master/images/full_diagram.png) 
+
 Specifically, it contains:
 
 - `Session Behavior Classifier API` which is an API written in Python's Flask framework, responsible for assigning behavior labels in user's web sessions using machine learning techniques.
@@ -35,6 +37,10 @@ The order in which each component should be used is the following:
 - Enable the use of the classification models in `Session Behavior Classifier API` to start using the system.
 
 The provided `model.joblib` file was created based on `misa-j`'s `social-network` website for the purpose of experimentation and evaluation of the system's efficiency.
+
+![](https://github.com/kosletr/SessionBehaviorClassifierAPI/blob/master/images/component1.png)
+
+![](https://github.com/kosletr/SessionBehaviorClassifierAPI/blob/master/images/component2.png) 
 
 # Credits ✨
 
